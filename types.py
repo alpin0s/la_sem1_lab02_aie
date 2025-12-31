@@ -2,7 +2,7 @@
 from typing import List, Tuple
 
 # Основные типы данных
-DenseMatrix = List[List[float]]  # Плотная матрица: [[1.0, 0.0], [0.0, 2.0]]
+DenseMatrix = List[List[float]]  # Плотная матрица: [[row1], [row2], ...] как в NumPy
 Shape = Tuple[int, int]  # Размерность: (rows, cols)
 Vector = List[float]  # Вектор: [1.0, 2.0, 3.0]
 
@@ -19,4 +19,5 @@ CSRIndptr = CSCIndptr = List[int]    # Указатели начала стро�
 # Типы для конструкторов
 COOArgs = Tuple[COOData, COORows, COOCols, Shape]
 CSRArgs = Tuple[CSRData, CSRIndices, CSRIndptr, Shape]
+
 CSCArgs = Tuple[CSCData, CSCIndices, CSCIndptr, Shape]
