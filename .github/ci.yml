@@ -1,0 +1,28 @@
+name: Autograding
+
+on:
+  pull_request_target:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+
+    steps:
+      - name: Checkout student code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Checkout reference
+        uses: actions/checkout@v4
+        with:
+          repository: L1st3ner/AIE_matrix_lab
+          token: ${{ secrets.REFERENCE_TOKEN }}
+          path: reference
+
+      - name: Install deps
+        run: pip install pytest
+
+      - name: Run tests
+        run: pytest reference/tests_base_operations.py
